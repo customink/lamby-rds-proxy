@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+if [ -z "${CDK_DEFAULT_ACCOUNT}" ]; then
+  export CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+fi
+export CDK_DEFAULT_REGION=$AWS_DEFAULT_REGION
+
+npm run build
